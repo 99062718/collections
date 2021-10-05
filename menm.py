@@ -1,14 +1,25 @@
 import random
 
-kleuren = ["oranje", "geel", "groen", "bruin"]
+kleurenList = ["oranje", "geel", "groen", "bruin"]
 
-def zakkenVuller(nummer):
+def zakkenVullerList(nummer):
     list = []
     for x in range(0, nummer):
-        kleur = kleuren[random.randint(0, len(kleuren)) - 1]
+        kleur = kleurenList[random.randint(0, len(kleurenList)) - 1]
         list.append(kleur)
     return list
 
-inputNum = int(input("Vul hier een nummer in:\n"))
+def zakkenVullerDictionary(nummer):
+    dictionary = {}
+    for x in range(0, nummer):
+        kleur = kleurenList[random.randint(0, len(kleurenList)) - 1]
+        try:
+            if dictionary[kleur] > 0:
+                dictionary[kleur] += 1
+        except:
+            dictionary[kleur] = 1
+    return dictionary
 
-print(zakkenVuller(inputNum))
+inputNum = int(input("Vul hier een nummer in:\n"))
+print(zakkenVullerList(inputNum))
+print(zakkenVullerDictionary(inputNum))
