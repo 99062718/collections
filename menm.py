@@ -1,13 +1,20 @@
 import random
+import collections
 
 kleurenList = ["oranje", "geel", "groen", "bruin"]
+
+def sorteren(list):
+    try:
+        return collections.OrderedDict(sorted(list.items()))
+    except:
+        return sorted(list)
 
 def zakkenVullerList(nummer):
     list = []
     for x in range(0, nummer):
         kleur = kleurenList[random.randint(0, len(kleurenList)) - 1]
         list.append(kleur)
-    return list
+    return sorteren(list)
 
 def zakkenVullerDictionary(nummer):
     dictionary = {}
@@ -18,7 +25,7 @@ def zakkenVullerDictionary(nummer):
                 dictionary[kleur] += 1
         except:
             dictionary[kleur] = 1
-    return dictionary
+    return sorteren(dictionary)
 
 inputNum = int(input("Vul hier een nummer in:\n"))
 print(zakkenVullerList(inputNum))
